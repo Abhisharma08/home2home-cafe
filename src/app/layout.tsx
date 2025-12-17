@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'HometoHome-Furniture and More.',
+  title: 'HometoHome - Furniture and More.',
   description: 'Experience designer furniture crafted for modern luxury direct from our Jodhpur factory.',
 };
 
