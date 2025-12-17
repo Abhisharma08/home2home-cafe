@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'HometoHome-Furniture and More.',
-  description: '',
+  description: 'Experience designer furniture crafted for modern luxury direct from our Jodhpur factory.',
 };
 
 export default function RootLayout({
