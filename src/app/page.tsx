@@ -1,21 +1,18 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '@/components/landing/Header';
 import Hero from '@/components/landing/Hero';
 import LeadFormSection from '@/components/landing/LeadFormSection';
 import CoreStrength from '@/components/landing/CoreStrength';
 import ProductRange from '@/components/landing/ProductRange';
 import CTASection from '@/components/landing/CTASection';
 import WhyChooseUs from '@/components/landing/WhyChooseUs';
-import Footer from '@/components/landing/Footer';
 import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
     <div className="relative bg-background text-foreground pb-24 md:pb-0">
       <div className="relative z-10">
-        <Header />
         <main className="flex-grow">
           <div className="relative">
             <div className="absolute inset-0">
@@ -40,7 +37,6 @@ export default function Home() {
           {/* <WhyChooseUs /> */}
           <CTASection />
         </main>
-        <Footer />
       </div>
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-4 bg-background/80 backdrop-blur-sm border-t border-border">
         <Button asChild size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
