@@ -5,7 +5,7 @@ import Header from '@/components/landing/Header'
 import Footer from '@/components/landing/Footer'
 
 export const metadata: Metadata = {
-  title: 'HometoHome - Furniture and More.',
+  title: 'Home2Home - Furniture and More.',
   description: 'Experience designer furniture crafted for modern luxury direct from our Jodhpur factory.',
 };
 
