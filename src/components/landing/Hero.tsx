@@ -1,7 +1,7 @@
 
 const Hero = () => {
   return (
-    <section className="text-white">
+    <section className="text-white pl-6 md:pl-12 lg:pl-20">
       <h1 className="text-4xl md:text-5xl font-headline font-bold leading-tight">
         Luxury Cafe Furniture for Functional and Stylish Spaces
       </h1>

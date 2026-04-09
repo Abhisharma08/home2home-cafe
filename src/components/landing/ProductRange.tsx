@@ -5,10 +5,11 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Description } from '@radix-ui/react-toast';
 
 const productCategories = [
-  { name: 'Café Chairs', imageId: 'outdoor-furniture', Description: 'Stable, well-crafted seating options designed for both comfort and visual consistency.' },
-  { name: 'Tables', imageId: 'office-furniture', Description: 'Durable, easy-to-maintain surfaces available in a range of sizes and finishes.' },
-  { name: 'Bar Stools and High Seating', imageId: 'living-room-furniture', Description: 'Ideal for layered seating formats and making effective use of vertical space.' },
-  { name: 'Outdoor Café Furniture', imageId: 'bedroom-furniture', Description: 'Weather-resistant designs suitable for outdoor and semi-open environments.' },
+
+  { name: 'Café Chairs', imageId: 'cafe-furniture', Description: ( <>  ' Stable, well-crafted seating options designed for <br /> both comfort and visual consistency.' </> ) },
+  { name: 'Tables', imageId: 'cafe-tables', Description: ( <>  'Durable, easy-to-maintain surfaces available <br /> in a range of sizes and finishes.' </> ) },
+  { name: 'Bar Stools and High Seating', imageId: 'cafe-barstools', Description: ( <>  'Ideal for layered seating formats and making <br /> effective use of vertical space.' </> ) },
+  { name: 'Outdoor Café Furniture', imageId: 'cafe-outdoor-furniture', Description: ( <>  'Weather-resistant designs suitable for outdoor <br /> and semi-open environments.' </> ) },
 ];
 
 const ProductRange = () => {
@@ -26,7 +27,7 @@ const ProductRange = () => {
             const image = PlaceHolderImages.find(img => img.id === category.imageId);
             return (
               <div className="flex flex-col items-center text-center">
-                <div className="w-[500px] h-[500px] overflow-hidden rounded-lg mb-4">
+                <div className="w-[500px] h-[400px] overflow-hidden rounded-lg mb-4">
                   {image && (
                     <Image
                     src={image.imageUrl}
@@ -39,12 +40,15 @@ const ProductRange = () => {
                 </div>
                 <h3 className="text-xl font-headline font-bold text-primary mb-1">{category.name}</h3>
                 <p className="text-primary text-sm">{category.Description}</p>
-              
+
+                <Link href="#form" className="mt-6 inline-block px-5 py-2 bg-accent text-black text-sm rounded-md hover:opacity-90 transition">
+                  Enquire Now
+                </Link>
               </div>
             );
           })}
         </div>
-        <div className="text-center mt-10 max-w-5xl mx-auto">
+        <div className="text-center mt-20 max-w-5xl mx-auto">
           <p className="text-primary font-bold text-xl leading-relaxed">
                        Suitable for a wide range of café formats including quick-service cafés, premium coffee spaces, casual dining setups, and outdoor seating areas.
           </p>

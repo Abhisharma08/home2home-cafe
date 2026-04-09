@@ -12,7 +12,7 @@ const Introduction = () => {
 
           {/* LEFT: Image */}
           <div className="flex flex-col items-center text-center">
-            <div className="w-[575px] h-[320px] overflow-hidden rounded-lg mb-4">
+            <div className="w-[600px] h-[320px] overflow-hidden rounded-lg mb-4">
               {image && (
                 <Image
                   src={image.imageUrl}
