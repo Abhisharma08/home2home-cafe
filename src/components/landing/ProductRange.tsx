@@ -21,21 +21,20 @@ const ProductRange = () => {
             Our Product Range
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-8">
           {productCategories.map((category) => {
             const image = PlaceHolderImages.find(img => img.id === category.imageId);
             return (
-              <div key={category.name} className="group text-center">
-                <div className="overflow-hidden rounded-lg mb-4 aspect-square">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-[500px] h-[500px] overflow-hidden rounded-lg mb-4">
                   {image && (
                     <Image
-                      src={image.imageUrl}
-                      alt={image.description}
-                      width={300}
-                      height={300}
-                      data-ai-hint={image.imageHint}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
-                    />
+                    src={image.imageUrl}
+                    alt={image.description}
+                    width={300}
+                    height={300}
+                    className="w-full h-full object-cover"
+/>
                   )}
                 </div>
                 <h3 className="text-xl font-headline font-bold text-primary mb-1">{category.name}</h3>

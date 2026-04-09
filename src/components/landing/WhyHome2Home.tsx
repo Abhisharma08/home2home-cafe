@@ -37,7 +37,7 @@ const whyPoints = [
 const WhyHome2Home = () => {
   return (
     <section className="bg-primary text-primary-foreground py-16 md:py-24">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-12 md:px-20 lg:px-32">
 
         {/* Heading */}
         <div className="text-center mb-12">
