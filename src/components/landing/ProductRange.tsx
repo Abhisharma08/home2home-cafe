@@ -2,14 +2,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Description } from '@radix-ui/react-toast';
 
 const productCategories = [
-  { name: 'Outdoor Furniture', imageId: 'outdoor-furniture' },
-  { name: 'Office Furniture', imageId: 'office-furniture' },
-  { name: 'Living Room Furniture', imageId: 'living-room-furniture' },
-  { name: 'Bedroom Furniture', imageId: 'bedroom-furniture' },
-  { name: 'Dining Furniture', imageId: 'dining-furniture' },
-  { name: 'Cafe & Bar', imageId: 'cafe-bar' },
+  { name: 'Café Chairs', imageId: 'outdoor-furniture', Description: 'Stable, well-crafted seating options designed for both comfort and visual consistency.' },
+  { name: 'Tables', imageId: 'office-furniture', Description: 'Durable, easy-to-maintain surfaces available in a range of sizes and finishes.' },
+  { name: 'Bar Stools and High Seating', imageId: 'living-room-furniture', Description: 'Ideal for layered seating formats and making effective use of vertical space.' },
+  { name: 'Outdoor Café Furniture', imageId: 'bedroom-furniture', Description: 'Weather-resistant designs suitable for outdoor and semi-open environments.' },
 ];
 
 const ProductRange = () => {
@@ -22,7 +21,7 @@ const ProductRange = () => {
             Our Product Range
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {productCategories.map((category) => {
             const image = PlaceHolderImages.find(img => img.id === category.imageId);
             return (
@@ -40,12 +39,16 @@ const ProductRange = () => {
                   )}
                 </div>
                 <h3 className="text-xl font-headline font-bold text-primary mb-1">{category.name}</h3>
-                <Link href="#form" className="text-sm text-accent hover:underline uppercase font-semibold tracking-wider">
-                  Enquire Now
-                </Link>
+                <p className="text-primary text-sm">{category.Description}</p>
+              
               </div>
             );
           })}
+        </div>
+        <div className="text-center mt-10 max-w-5xl mx-auto">
+          <p className="text-primary font-bold text-xl leading-relaxed">
+                       Suitable for a wide range of café formats including quick-service cafés, premium coffee spaces, casual dining setups, and outdoor seating areas.
+          </p>
         </div>
       </div>
     </section>

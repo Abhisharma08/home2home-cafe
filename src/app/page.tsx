@@ -3,11 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Hero from '@/components/landing/Hero';
 import LeadFormSection from '@/components/landing/LeadFormSection';
+import Introduction from '@/components/landing/Introduction';
 import CoreStrength from '@/components/landing/CoreStrength';
 import ProductRange from '@/components/landing/ProductRange';
 import CTASection from '@/components/landing/CTASection';
 import WhyChooseUs from '@/components/landing/WhyChooseUs';
 import { Button } from '@/components/ui/button';
+import WhyHome2Home from '@/components/landing/WhyHome2Home';
 
 export default function Home() {
   return (
@@ -32,7 +34,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <CoreStrength />
+          <Introduction />
+          <WhyHome2Home />
+          {/* <CoreStrength /> */}
           <ProductRange />
           {/* <WhyChooseUs /> */}
           <CTASection />
