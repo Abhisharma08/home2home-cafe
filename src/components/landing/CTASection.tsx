@@ -12,7 +12,7 @@ const CTASection = () => {
           Work with Home2Home to create a café space that is efficient, comfortable, and visually aligned with your brand.
         </p>
         <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-          <Link href="#form">Reply to know more</Link>
+          <Link href="#form">Enquire Now</Link>
         </Button>
       </div>
     </section>
