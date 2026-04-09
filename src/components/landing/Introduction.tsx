@@ -11,8 +11,8 @@ const Introduction = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
           {/* LEFT: Image */}
-          <div className="flex flex-col items-center text-center">
-            <div className="w-[600px] h-[320px] overflow-hidden rounded-lg mb-4">
+          <div className="flex flex-col items-start">
+            <div className="w-full max-w-[450px] md:max-w-[500px] lg:max-w-[550px] aspect-[4/3] overflow-hidden rounded-lg mb-4 mt-4 md:mt-6">
               {image && (
                 <Image
                   src={image.imageUrl}
@@ -26,7 +26,7 @@ const Introduction = () => {
           </div>
 
           {/* RIGHT: Content */}
-          <div className="text-left">
+           <div className="text-left">
             <p className="text-primary text-lg md:text-xl mb-6 leading-relaxed">
               <span className="font-bold text-2xl">Home2Home</span> offers a curated range of café furniture designed to meet the functional 
               and visual demands of modern hospitality spaces. Each piece reflects a balance of 
