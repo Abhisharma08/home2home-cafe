@@ -1,6 +1,8 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
+   basePath: '/luxury-cafe-furniture',
+  trailingSlash: true,
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
