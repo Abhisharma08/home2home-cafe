@@ -7,7 +7,7 @@ import { Description } from '@radix-ui/react-toast';
 const productCategories = [
 
   { name: 'Café Chairs', imageId: 'cafe-furniture', Description: ( <>  Stable, well-crafted seating options designed for <br /> both comfort and visual consistency. </> ) },
-  { name: 'Tables', imageId: 'cafe-tables', Description: ( <>  Durable, easy-to-maintain surfaces available <br /> in a range of sizes and finishes. </> ) },
+  { name: 'Tables', imageId: 'cafe-tables', Description: ( <>  Durable, easy-to-maintain <br />surfaces available  in a range of <br />sizes and finishes. </> ) },
   { name: 'Bar Stools and High Seating', imageId: 'cafe-barstools', Description: ( <>  Ideal for layered seating formats and making <br /> effective use of vertical space. </> ) },
   { name: 'Outdoor Café Furniture', imageId: 'cafe-outdoor-furniture', Description: ( <>  Weather-resistant designs suitable for outdoor <br /> and semi-open environments. </> ) },
 ];
