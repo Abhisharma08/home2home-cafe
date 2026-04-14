@@ -15,22 +15,10 @@ const whyPoints = [
       'Seating designed to offer consistent comfort, encouraging customers to spend more time in your space.',
   },
   {
-    icon: Hammer,
-    title: 'Handcrafted with Attention to Detail',
-    description:
-      'Each piece is thoughtfully handcrafted, ensuring precision, quality, and a distinctive finish that sets your space apart.',
-  },
-  {
     icon: Sparkles,
     title: 'Refined Aesthetic Appeal',
     description:
       'Clean designs and carefully selected finishes that elevate the overall look and feel of your café.',
-  },
-  {
-    icon: LayoutGrid,
-    title: 'Efficient Space Utilisation',
-    description:
-      'Smart configurations that help optimise seating layouts and improve movement within the space.',
   },
 ];
 
