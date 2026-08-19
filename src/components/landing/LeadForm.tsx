@@ -41,7 +41,8 @@ const productRequirements = [
 // Function to send data to the backend API
 async function saveToCrm(data: Partial<z.infer<typeof formSchema>>) {
   try {
-    const response = await fetch('/api/hubspot', {
+    const basePath = '/luxury-cafe-furniture';
+    const response = await fetch(`${basePath}/api/hubspot`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ async function saveToCrm(data: Partial<z.infer<typeof formSchema>>) {
     if (!response.ok) {
       // Log the error but don't block the user journey.
       try {
-        const errorData = await response.json();
+        const errorData = await response.clone().json();
         console.error('Failed to save data to HubSpot', errorData);
       } catch (e) {
         console.error('Failed to save data to HubSpot and failed to parse error response.', await response.text());

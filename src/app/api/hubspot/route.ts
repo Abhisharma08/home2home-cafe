@@ -32,37 +32,99 @@ export async function POST(request: Request) {
   };
 
   try {
-    //
-    // ** YOUR ACTION REQUIRED HERE **
-    // This is where you make the actual call to the HubSpot API.
-    // The example below uses the fetch API.
-    //
-    const response = await fetch(hubspotApiUrl, {
-      method: 'POST',
+    // 1. Initial GET request to check if contact exists
+    const getUrl = `https://api.hubapi.com/crm/v3/objects/contacts/${body.email}?idProperty=email`;
+    const getResponse = await fetch(getUrl, {
+      method: 'GET',
       headers: {
         'Authorization': `Bearer ${hubspotApiKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ properties }),
+      cache: 'no-store',
     });
 
-    const responseData = await response.json();
-
-    if (!response.ok) {
-      // If HubSpot returns an error, log it and return a server error.
-      console.error('HubSpot API Error:', responseData);
+    if (getResponse.ok) {
+      // Contact exists, do a PATCH
+      const existingContact = await getResponse.json();
+      const existingId = existingContact.id;
+      const patchUrl = `https://api.hubapi.com/crm/v3/objects/contacts/${existingId}`;
+      const patchResponse = await fetch(patchUrl, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${hubspotApiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ properties }),
+      });
+      const patchData = await patchResponse.json();
+      if (!patchResponse.ok) {
+        console.error('HubSpot API Error on PATCH:', patchData);
+        return NextResponse.json(
+          { message: 'Failed to update data in HubSpot.', error: patchData },
+          { status: patchResponse.status }
+        );
+      }
       return NextResponse.json(
-        { message: 'Failed to submit data to HubSpot.', error: responseData },
-        { status: response.status }
+          { message: 'Data updated successfully.', data: patchData },
+          { status: 200 }
+      );
+    } else {
+      // Contact doesn't seem to exist, do a POST
+      const response = await fetch(hubspotApiUrl, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${hubspotApiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ properties }),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        // Fallback for 409 Conflict
+        if (response.status === 409 && responseData.message) {
+          const match = responseData.message.match(/Existing ID: (\d+)/);
+          if (match && match[1]) {
+            const existingId = match[1];
+            const patchUrl = `https://api.hubapi.com/crm/v3/objects/contacts/${existingId}`;
+            const patchResponse = await fetch(patchUrl, {
+              method: 'PATCH',
+              headers: {
+                'Authorization': `Bearer ${hubspotApiKey}`,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ properties }),
+            });
+            const patchData = await patchResponse.json();
+            if (!patchResponse.ok) {
+               console.error('HubSpot API Error on PATCH fallback:', patchData);
+               return NextResponse.json(
+                 { message: 'Failed to update data in HubSpot via fallback.', error: patchData },
+                 { status: patchResponse.status }
+               );
+            }
+            return NextResponse.json(
+              { message: 'Data updated successfully via fallback.', data: patchData },
+              { status: 200 }
+            );
+          }
+        }
+
+        // If HubSpot returns an error, log it and return a server error.
+        console.error('HubSpot API Error:', responseData);
+        return NextResponse.json(
+          { message: 'Failed to submit data to HubSpot.', error: responseData },
+          { status: response.status }
+        );
+      }
+
+      // If the call is successful, return a success response.
+      return NextResponse.json(
+          { message: 'Data submitted successfully.', data: responseData },
+          { status: 201 } // 201 Created
       );
     }
-
-    // If the call is successful, return a success response.
-    return NextResponse.json(
-        { message: 'Data submitted successfully.', data: responseData },
-        { status: 201 } // 201 Created
-    );
-
   } catch (error) {
     console.error('An unexpected error occurred:', error);
     return NextResponse.json(
