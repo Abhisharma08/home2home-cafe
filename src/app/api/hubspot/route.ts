@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     city: body.city,
     // Assuming you have a custom property for 'product_requirement' in HubSpot.
     // If the internal name is different, you must change it here.
-    product_requirement: body.productRequirement,
+    what_are_you_looking_for: body.productRequirement,
   };
 
   try {
